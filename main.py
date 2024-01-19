@@ -10,17 +10,20 @@ con.executescript(damp)
 con.commit()
 cursor = con.cursor()
 
-cursor.execute('''
-select b.book_id, b.title
-from book b
-where b.book_id in (
-    select br.book_id
-    from book_reader br)
-''')
-result = cursor.fetchall()
-print(pd.DataFrame(result))
-print('\n')
+# cursor.execute('''
+# select b.book_id, b.title
+# from book b
+# where b.book_id in (
+#     select br.book_id
+#     from book_reader br)
+# ''')
+# result = cursor.fetchall()
+# print(pd.DataFrame(result))
+# print('\n')
 
+
+#task 1
+print('task 1')
 
 cursor.execute('''
 select b.book_id, title, 
@@ -41,6 +44,8 @@ result = cursor.fetchall()
 print(pd.DataFrame(result))
 print('\n')
 
+#task 2
+print('task 2')
 
 df = pd.read_sql('''
 select 'I' as Группа, reader_name as Читатель,
@@ -67,6 +72,9 @@ order by Группа, Читатель, Количество desc
 ''', con)
 print(df)
 print('\n')
+
+#task 3
+print('task 3')
 
 df = pd.read_sql('''
 WITH BookBorrowCounts AS (
@@ -109,6 +117,7 @@ print(df)
 print('\n')
 
 
+#task 4
 
 cursor.execute('''
        SELECT
@@ -153,6 +162,10 @@ if last_borrowed_book:
 
 con.commit()
 
+
+#task 5
+print('task 5')
+
 df = pd.read_sql('''
     WITH RankedBooks AS (
         SELECT
@@ -184,3 +197,5 @@ print(df)
 print('\n')
 
 con.close()
+
+#test
